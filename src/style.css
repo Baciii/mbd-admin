@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #eee;
+}
+
+.operations {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.operations > * {
+  margin-right: 10px;
+}
