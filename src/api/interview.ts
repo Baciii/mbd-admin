@@ -1,6 +1,6 @@
 import { request } from '../utils/request';
 
-export const interviewList = () => {
+export const interviewList = (): Promise<NetReq.InterviewList[]> => {
     return request({
         method: 'GET',
         url: '/api/interviewList'

@@ -2,7 +2,11 @@
     <div class="operations">
         <t-input style="width: 232px" v-model="keyword" />
         <t-button @click="search">搜索</t-button>
-        <t-button @click="newUserVisible = true">新增用户</t-button>
+        <t-button
+            @click="newUserVisible = true"
+            :disabled="!(permission === '0')"
+            >新增用户</t-button
+        >
     </div>
 
     <t-space direction="vertical">
@@ -100,6 +104,8 @@
 
 <script lang="tsx" setup>
     import { ref, onMounted } from 'vue';
+    import { userStore } from '../../store/index.ts';
+
     import { TableProps, MessagePlugin } from 'tdesign-vue-next';
     import {
         CheckCircleFilledIcon,
@@ -109,6 +115,9 @@
     } from 'tdesign-icons-vue-next';
 
     import { userList, newUser, modifyUser, deleteUser } from '../../api/user';
+
+    const user = userStore();
+    const permission = ref(user.type);
 
     /** 搜索 */
     const keyword = ref<string>('');
@@ -210,6 +219,7 @@
                     <t-button
                         variant="text"
                         theme="primary"
+                        disabled={!(permission.value === '0')}
                         onClick={() => onModifyUserPre(row)}
                     >
                         修改
@@ -217,6 +227,7 @@
                     <t-button
                         variant="text"
                         theme="primary"
+                        disabled={!(permission.value === '0')}
                         onClick={() => onDeleteUserPre(row)}
                     >
                         删除

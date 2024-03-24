@@ -53,6 +53,9 @@
     import { login } from '../../api/user';
     import { useRouter } from 'vue-router';
     import { MessagePlugin } from 'tdesign-vue-next';
+    import { userStore } from '../../store/index.ts';
+
+    const user = userStore();
 
     const router = useRouter();
 
@@ -65,6 +68,11 @@
                 username: username.value,
                 password: password.value
             });
+            const { id: ID, username: USERNAME, type } = res;
+            /** 设置全局 id/username */
+            user.setID(ID);
+            user.setUsername(USERNAME);
+            user.setType(type);
 
             MessagePlugin.success({
                 content: '登录成功'

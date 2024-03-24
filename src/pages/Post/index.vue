@@ -124,6 +124,8 @@
 
 <script lang="tsx" setup>
     import { ref, onMounted } from 'vue';
+    import { userStore } from '../../store/index.ts';
+
     import {
         TableProps,
         MessagePlugin,
@@ -135,6 +137,8 @@
         deletePost,
         modifyPost
     } from '../../api/post.ts';
+
+    const user = userStore();
 
     const initData = async () => {
         const res = await postList();
@@ -296,7 +300,7 @@
         type: null,
         contact: null,
         description: null,
-        publisher: 1
+        publisher: user.id
     });
 
     const addPostPre = () => {
@@ -332,7 +336,7 @@
         type: null,
         contact: null,
         description: null,
-        publisher: 1
+        publisher: user.id
     });
 
     const onModifyPostPre = (row) => {
