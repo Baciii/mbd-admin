@@ -2,6 +2,8 @@ declare module NetReq {
     interface Login {
         id: number;
         token: string;
+        username: string;
+        type: '0' | '1' | '2' | '3';
     }
 
     interface UserList {
@@ -34,5 +36,14 @@ declare module NetReq {
         question_stem: string;
         tag: string;
         type: string;
+    }
+
+    interface InterviewList {
+        id: number;
+        company: string;
+        post: string;
+        content: string;
+        isPublic: string;
+        publisher: string;
     }
 }
