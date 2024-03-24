@@ -6,11 +6,17 @@
             style="height: calc(100vh); position: fixed; top: 0px"
         >
             <template #logo>
-                <img
-                    height="28"
-                    src="https://tdesign.gtimg.com/site/baseLogo-light.png"
-                    alt="logo"
-                />
+                <div style="padding: 0 10px">
+                    <t-avatar :image="avatar" size="large"></t-avatar>
+                    <span
+                        style="
+                            color: #004ace;
+                            margin-left: 10px;
+                            font-size: 14px;
+                        "
+                        >「 {{ user.username }} 」</span
+                    >
+                </div>
             </template>
             <t-menu-item
                 v-for="item in navList"
@@ -30,6 +36,10 @@
 <script lang="ts" setup>
     import { ref, onMounted } from 'vue';
     import { useRouter, useRoute } from 'vue-router';
+    import { userStore } from '../../store/index.ts';
+    import avatar from '../../assets/header.png';
+
+    const user = userStore();
 
     const router = useRouter();
     const route = useRoute();
