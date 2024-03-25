@@ -68,7 +68,9 @@
                 username: username.value,
                 password: password.value
             });
-            const { id: ID, username: USERNAME, type } = res;
+            const { id: ID, username: USERNAME, type, token } = res;
+            localStorage.setItem('TOKEN', token);
+
             /** 设置全局 id/username */
             user.setID(ID);
             user.setUsername(USERNAME);
@@ -78,7 +80,6 @@
                 content: '登录成功'
             });
 
-            localStorage.setItem('TOKEN', res.token);
             router.push({
                 name: 'user'
             });

@@ -14,7 +14,7 @@
                             margin-left: 10px;
                             font-size: 14px;
                         "
-                        >「 {{ user.username }} 」</span
+                        >「 {{ username }} 」</span
                     >
                 </div>
             </template>
@@ -38,8 +38,10 @@
     import { useRouter, useRoute } from 'vue-router';
     import { userStore } from '../../store/index.ts';
     import avatar from '../../assets/header.png';
+    import { storeToRefs } from 'pinia';
 
     const user = userStore();
+    const { username } = storeToRefs(user);
 
     const router = useRouter();
     const route = useRoute();
