@@ -7,7 +7,7 @@ export const questionList = (): Promise<NetReq.QuestionList[]> => {
     });
 };
 
-export const addQuestion = (data) => {
+export const addQuestion = (data: NetParams.AddQuestion) => {
     return request({
         method: 'POST',
         url: '/api/addQuestion',
@@ -15,7 +15,7 @@ export const addQuestion = (data) => {
     });
 };
 
-export const deleteQuestion = (data) => {
+export const deleteQuestion = (data: NetParams.DeleteQuestion) => {
     return request({
         method: 'DELETE',
         url: '/api/deleteQuestion',
@@ -23,7 +23,7 @@ export const deleteQuestion = (data) => {
     });
 };
 
-export const modifyQuestion = (data) => {
+export const modifyQuestion = (data: NetParams.ModifyQuestion) => {
     return request({
         method: 'POST',
         url: '/api/modifyQuestion',

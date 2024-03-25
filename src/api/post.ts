@@ -7,7 +7,7 @@ export const postList = (): Promise<NetReq.PostList[]> => {
     });
 };
 
-export const addPost = (data) => {
+export const addPost = (data: NetParams.AddPost) => {
     return request({
         method: 'POST',
         url: '/api/addPost',
@@ -15,7 +15,7 @@ export const addPost = (data) => {
     });
 };
 
-export const deletePost = (data) => {
+export const deletePost = (data: NetParams.DeletePost) => {
     return request({
         method: 'DELETE',
         url: '/api/deletePost',
@@ -23,7 +23,7 @@ export const deletePost = (data) => {
     });
 };
 
-export const modifyPost = (data) => {
+export const modifyPost = (data: NetParams.ModifyPost) => {
     return request({
         method: 'POST',
         url: '/api/modifyPost',

@@ -7,7 +7,7 @@ export const interviewList = (): Promise<NetReq.InterviewList[]> => {
     });
 };
 
-export const addInterview = (data) => {
+export const addInterview = (data: NetParams.AddInterview) => {
     return request({
         method: 'POST',
         url: '/api/addInterview',
@@ -15,7 +15,7 @@ export const addInterview = (data) => {
     });
 };
 
-export const deleteInterview = (data) => {
+export const deleteInterview = (data: NetParams.DeleteInterview) => {
     return request({
         method: 'DELETE',
         url: '/api/deleteInterview',
@@ -23,7 +23,7 @@ export const deleteInterview = (data) => {
     });
 };
 
-export const modifyInterview = (data) => {
+export const modifyInterview = (data: NetParams.ModifyInterview) => {
     return request({
         method: 'POST',
         url: '/api/modifyInterview',
