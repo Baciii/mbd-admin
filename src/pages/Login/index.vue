@@ -25,15 +25,14 @@
                         <input
                             v-model="username"
                             type="text"
-                            placeholder="username"
+                            placeholder="USERNAME"
                         />
                     </div>
                     <div>
-                        <i class="fa fa-key"></i>
                         <input
                             v-model="password"
                             type="password"
-                            placeholder="password"
+                            placeholder="PASSWORD"
                         />
                     </div>
                     <div class="btn">
@@ -69,20 +68,26 @@
                 password: password.value
             });
             const { id: ID, username: USERNAME, type, token } = res;
-            localStorage.setItem('TOKEN', token);
+            if (['0', '1', '2'].includes(type)) {
+                localStorage.setItem('TOKEN', token);
 
-            /** 设置全局 id/username */
-            user.setID(ID);
-            user.setUsername(USERNAME);
-            user.setType(type);
+                /** 设置全局 id/username */
+                user.setID(ID);
+                user.setUsername(USERNAME);
+                user.setType(type);
 
-            MessagePlugin.success({
-                content: '登录成功'
-            });
+                MessagePlugin.success({
+                    content: '登录成功'
+                });
 
-            router.push({
-                name: 'user'
-            });
+                router.push({
+                    name: 'user'
+                });
+            } else {
+                MessagePlugin.error({
+                    content: '用户权限不足，无法登录'
+                });
+            }
         } catch (err) {
             console.log(err);
         }

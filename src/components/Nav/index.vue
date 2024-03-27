@@ -6,7 +6,7 @@
             style="height: calc(100vh); position: fixed; top: 0px"
         >
             <template #logo>
-                <div style="padding: 0 10px">
+                <div style="padding: 0 0px">
                     <t-avatar :image="avatar" size="large"></t-avatar>
                     <span
                         style="
@@ -16,6 +16,9 @@
                         "
                         >「 {{ username }} 」</span
                     >
+                    <t-tag theme="success" variant="light" shape="round">
+                        {{ type === '0' ? '超级管理员' : '普通管理员' }}
+                    </t-tag>
                 </div>
             </template>
             <t-menu-item
@@ -41,7 +44,7 @@
     import { storeToRefs } from 'pinia';
 
     const user = userStore();
-    const { username } = storeToRefs(user);
+    const { username, type } = storeToRefs(user);
 
     const router = useRouter();
     const route = useRoute();
