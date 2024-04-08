@@ -236,7 +236,8 @@
                     placement: 'left'
                 },
                 content: (h, { row }) => {
-                    const temp = row.description.split('\n');
+                    let temp = row.description || '';
+                    temp = temp.split('\n');
 
                     return (
                         <div>
