@@ -19,26 +19,28 @@
                     </div>
                 </div>
                 <h1>Welcome back</h1>
-                <form action="#" class="form">
-                    <div>
-                        <i class="fa fa-user-o"></i>
-                        <input
-                            v-model="username"
-                            type="text"
-                            placeholder="USERNAME"
-                        />
-                    </div>
-                    <div>
-                        <input
-                            v-model="password"
-                            type="password"
-                            placeholder="PASSWORD"
-                        />
-                    </div>
-                    <div class="btn">
-                        <t-button @click="onLogin">login</t-button>
-                    </div>
-                </form>
+                <div style="width: 100%">
+                    <form action="#" class="form">
+                        <div>
+                            <i class="fa fa-user-o"></i>
+                            <input
+                                v-model="username"
+                                type="text"
+                                placeholder="USERNAME"
+                            />
+                        </div>
+                        <div>
+                            <input
+                                v-model="password"
+                                type="password"
+                                placeholder="PASSWORD"
+                            />
+                        </div>
+                        <div class="btn">
+                            <t-button @click="onLogin">login</t-button>
+                        </div>
+                    </form>
+                </div>
                 <p class="btn-something">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </p>
