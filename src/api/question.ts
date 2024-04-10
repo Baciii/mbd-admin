@@ -30,3 +30,10 @@ export const modifyQuestion = (data: NetParams.ModifyQuestion) => {
         data
     });
 };
+
+export const questionTypeList = (): Promise<NetReq.QuestionTypeList[]> => {
+    return request({
+        method: 'GET',
+        url: '/api/questionTypeList'
+    });
+};

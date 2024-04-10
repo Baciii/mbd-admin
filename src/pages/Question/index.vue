@@ -110,10 +110,21 @@
             </t-form-item>
 
             <t-form-item label="类型" name="type">
-                <t-input
+                <!-- <t-input
                     v-model="addQuestionForm.type"
                     placeholder="请输入题目类型"
-                />
+                /> -->
+                <t-select
+                    v-model="addQuestionForm.type"
+                    placeholder="请选择题目类型"
+                >
+                    <t-option
+                        v-for="(item, index) in typeList"
+                        :key="index"
+                        :label="item.type"
+                        :value="item.type"
+                    />
+                </t-select>
             </t-form-item>
 
             <t-form-item label="标签" name="tag">
@@ -177,10 +188,18 @@
             </t-form-item>
 
             <t-form-item label="类型" name="type">
-                <t-input
+                <!-- <t-input
                     v-model="modifyQuestionForm.type"
                     placeholder="请输入题目类型"
-                />
+                /> -->
+                <t-select v-model="modifyQuestionForm.type">
+                    <t-option
+                        v-for="(item, index) in typeList"
+                        :key="index"
+                        :label="item.type"
+                        :value="item.type"
+                    />
+                </t-select>
             </t-form-item>
 
             <t-form-item label="标签" name="tag">
@@ -208,13 +227,17 @@
         questionList,
         addQuestion,
         deleteQuestion,
-        modifyQuestion
+        modifyQuestion,
+        questionTypeList
     } from '../../api/question';
     import { TableProps, MessagePlugin } from 'tdesign-vue-next';
     import { mapNumberToLetter } from '../../utils/index.ts';
 
     const initData = async () => {
         const res = await questionList();
+
+        const questionType = await questionTypeList();
+        typeList.value = questionType;
 
         questionTableData.value = res;
         filterData.value = res;
@@ -235,6 +258,7 @@
     const filterData = ref<TableProps['data']>([]);
     const questionTableData = ref<TableProps['data']>([]);
     const tableLoading = ref(false);
+    const typeList = ref([]);
 
     const columns = ref<TableProps['columns']>([
         {
@@ -250,6 +274,11 @@
             ellipsis: true
         },
         {
+            colKey: 'type',
+            title: '类型',
+            align: 'center'
+        },
+        {
             colKey: 'options',
             align: 'center',
             title: '选项'
@@ -263,11 +292,6 @@
         {
             colKey: 'tag',
             title: '标签',
-            align: 'center'
-        },
-        {
-            colKey: 'type',
-            title: '类型',
             align: 'center'
         },
         {

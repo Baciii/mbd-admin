@@ -46,4 +46,9 @@ declare module NetReq {
         isPublic: string;
         publisher: string;
     }
+
+    interface QuestionTypeList {
+        id: number;
+        type: string;
+    }
 }
