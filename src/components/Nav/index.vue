@@ -83,8 +83,8 @@
             icon: 'wave-right'
         },
         {
-            name: '资料管理',
-            id: 'study',
+            name: '文章管理',
+            id: 'article',
             icon: 'book'
         },
         {
