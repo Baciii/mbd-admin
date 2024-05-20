@@ -40,7 +40,7 @@
     import { ref, onMounted } from 'vue';
     import { useRouter, useRoute } from 'vue-router';
     import { userStore } from '../../store/index.ts';
-    import avatar from '../../assets/header.png';
+    import avatar from '../../assets/header2.png';
     import { storeToRefs } from 'pinia';
 
     const user = userStore();
